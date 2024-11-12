@@ -1,0 +1,120 @@
+<app-navbar></app-navbar>
+<div
+  class="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8"
+>
+  <div class="sm:mx-auto sm:w-full sm:max-w-md">
+    <h2
+      class="mt-6 text-center text-3xl leading-9 font-extrabold text-gray-900"
+    >
+      Login account
+    </h2>
+    <p class="mt-2 text-center text-sm leading-5 text-gray-500 max-w">
+      Or
+      <a
+        href="#"
+        class="font-medium text-blue-600 hover:text-blue-500 focus:outline-none focus:underline transition ease-in-out duration-150"
+      >
+        Register to your account
+      </a>
+    </p>
+  </div>
+
+  <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+    <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+      <form
+        method="POST"
+        action=""
+        #f="ngForm"
+        novalidate
+        (ngSubmit)="f.form.valid && onSubmit()"
+      >
+        <div class="mt-6">
+          <label
+            for="email"
+            class="block text-sm font-medium leading-5 text-gray-700"
+          >
+            Email Address
+          </label>
+          <div class="mt-1 relative rounded-md shadow-sm">
+            <input
+              id="email"
+              name="email"
+              placeholder="user@example.com"
+              type="email"
+              [(ngModel)]="formdata.email"
+              #email="ngModel"
+              required
+              required=""
+              class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+            />
+            <span
+            class="text-red-600"
+            *ngIf="this.submit&&email.errors?.['required']"
+            >Email Address is required</span
+          >
+          </div>
+        </div>
+
+        <div class="mt-6">
+          <label
+            for="password"
+            class="block text-sm font-medium leading-5 text-gray-700"
+          >
+            Password
+          </label>
+          <div class="mt-1 rounded-md shadow-sm">
+            <input
+              id="password"
+              name="password"
+              type="password"
+              [(ngModel)]="formdata.password"
+              #password="ngModel"
+              required
+              class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+            />
+          </div>
+          <span
+          class="text-red-600"
+          *ngIf="this.submit&&password.errors?.['required']"
+          >Password is required</span
+        >
+        </div>
+
+        <span class="text-red-600 p-5" *ngIf="this.errorMessage">
+            <p [innerText]="this.errorMessage"></p>
+          </span>
+  
+          <div class="flex items-center justify-center p-3"  *ngIf="this.loading">
+              <div
+                class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-surface motion-reduce:animate-[spin_1.5s_linear_infinite] text-blue-700"
+                role="status"
+              >
+                <span
+                  class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
+                  >Loading...</span
+                >
+              </div>
+            </div>
+
+        <div class="mt-6">
+          <span class="block w-full rounded-md shadow-sm">
+            <button
+              type="submit"
+              (click)="submit=true" [disabled]="this.loading"
+              class="w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out"
+            >
+              Login
+            </button>
+          </span>
+        </div>
+
+        <!-- <div class="mt-6">
+                    <label for="password" class="block text-sm font-medium leading-5 text-gray-700">
+                        Already have account ? Please <a href="">Register</a>
+                    </label>
+                  
+                </div> -->
+      </form>
+    </div>
+  </div>
+</div>
